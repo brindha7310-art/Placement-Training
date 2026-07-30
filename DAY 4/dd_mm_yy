@@ -1,0 +1,68 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int dd,mm,yy,days=0,itr;
+        dd=sc.nextInt();
+        mm=sc.nextInt();
+        yy=sc.nextInt();
+        for(itr=1900;itr<yy;itr++)
+        {
+            if(itr%4==0 && itr%100!=0 || itr%400==0)
+            {
+                days+=366;
+            }
+            else
+            {
+                days+=365;
+            }
+        }
+        for(itr=1;itr<mm;itr++)
+        {
+            if(itr==1 || itr==3 || itr==5 || itr==7 || itr==8 || itr==10 || itr==12)
+            {
+                days+=31;
+            }
+            else if(itr==4 || itr==6 || itr==9 || itr==11)
+            {
+                days+=30;
+            }
+            else
+            {
+                if(yy%4==0 && yy%100!=0 || yy%400==0)
+                {
+                    days+=29;
+                }
+                else{
+                    days+=28;
+                }
+            }
+        }
+        days+=dd;
+        int ans = days%7;
+        switch(ans)
+        {
+            case 0:
+                System.out.println("Sunday");
+                break;
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            case 5:
+                System.out.println("Friday");
+                break;
+            default:
+                System.out.println("Saturday");
+        }
+        
+    }
+}
